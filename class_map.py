@@ -8,9 +8,10 @@ class Map():
 
     def __init__(self):
         self.matrix = []
+        self.matrixPixel = []
         self.windowSize = 450
         self.nbSprite = 15
-        self.spriteSize = self.windowSize / self.nbSprite
+        self.spriteSize = int(self.windowSize / self.nbSprite)
         self.window = pygame.display.set_mode([450, 450])
         self.background = pygame.image.load("images/fond.jpg").convert()
         self.wall = pygame.image.load("images/mur2.png").convert()
@@ -42,15 +43,42 @@ class Map():
             self.matrix = column
         #  place the objects randomly
         self.object = []
+        countObject = 0
         while len(self.object) < 3:
             objectTemp = [random.randint(0, 14), random.randint(0, 14)]
 
             if self.matrix[objectTemp[1]][objectTemp[0]][2] == "0":
                 self.object.append(objectTemp)
-                self.matrix[objectTemp[1]][objectTemp[0]][2]= "obj"
-        print(self.matrix)
-        print(self.object)
-        print(objectTemp)
+            if countObject == 0:
+                self.matrix[objectTemp[1]][objectTemp[0]][2]= "ether"
+            if countObject == 1:
+                self.matrix[objectTemp[1]][objectTemp[0]][2]= "needle"
+            if countObject == 2:
+                self.matrix[objectTemp[1]][objectTemp[0]][2]= "tube"
+            countObject +=1
+
+
+
+    def mapCreationPixel(self):
+        structurePixel = []
+        y = 0
+        for ligne in self.matrix:
+            linePixel = []
+            x = 0
+            for item in ligne:
+                for spriteP in item:
+                    spritePixel = []
+                    spritePixel.append((x * self.spriteSize))
+                    spritePixel.append((y * self.spriteSize))
+                    spritePixel.append(spriteP)
+                linePixel.append(spritePixel)
+                x += 1
+            y += 1
+
+
+            structurePixel.append(linePixel)
+        self.matrixPixel = structurePixel
+
 
 
 
