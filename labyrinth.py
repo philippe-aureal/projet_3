@@ -7,7 +7,8 @@ from pygame.locals import *
 labyrinth = Map()
 labyrinth.mapCreation()
 # initialisation of pygame
-print(labyrinth.matrix)
+#print(labyrinth.matrix)
+inventaire = 0
 
 
 pygame.init()
@@ -27,7 +28,7 @@ x = positionHero[0]
 y = positionHero[1]
 
 labyrinth.window.blit(hero, (x * labyrinth.spriteSize, y * labyrinth.spriteSize))
-
+print(labyrinth.object)
 pygame.display.flip()
 #boucle et mouvement du personnage
 continuer = 1
@@ -54,6 +55,20 @@ while continuer:
                 if x - 1 >= 0:
                     if labyrinth.matrix[y][x - 1][2] != "m":
                         x -= 1
+
+            if labyrinth.matrix[y][x][2] == "ether":
+                labyrinth.matrix[y][x][2] = "o"
+                inventaire += 1
+            if labyrinth.matrix[y][x][2] == "needle":
+                labyrinth.matrix[y][x][2] = "o"
+                inventaire += 1
+            if labyrinth.matrix[y][x][2] == "tube":
+                labyrinth.matrix[y][x][2] = "o"
+                inventaire += 1
+
+            if labyrinth.matrix[y][x][2] == "a" and inventaire == 3:
+                continuer = 0
+
 
 
 
