@@ -7,7 +7,7 @@ from pygame.locals import *
 labyrinth = Map()
 labyrinth.mapCreation()
 # initialisation of pygame
-#print(labyrinth.matrix)
+
 inventaire = 0
 
 
@@ -17,8 +17,8 @@ pygame.init()
 labyrinth.displayMap()
 hero = pygame.image.load("images/MacGyver.png").convert()
 positionHero = []
+# position of hero
 
-print(labyrinth.matrix)
 for element in labyrinth.matrix:
     for item in element:
         if item[2] == "d":
@@ -28,7 +28,7 @@ x = positionHero[0]
 y = positionHero[1]
 
 labyrinth.window.blit(hero, (x * labyrinth.spriteSize, y * labyrinth.spriteSize))
-print(labyrinth.object)
+
 pygame.display.flip()
 #boucle et mouvement du personnage
 continuer = 1
@@ -36,6 +36,7 @@ while continuer:
     for event in pygame.event.get():
         if event.type == KEYDOWN and event.key == K_ESCAPE:
             continuer = 0
+    #lead the hero
         if event.type == KEYDOWN:
             if event.key == K_DOWN:
 
@@ -55,7 +56,7 @@ while continuer:
                 if x - 1 >= 0:
                     if labyrinth.matrix[y][x - 1][2] != "m":
                         x -= 1
-
+        #recuperation of objects
             if labyrinth.matrix[y][x][2] == "ether":
                 labyrinth.matrix[y][x][2] = "o"
                 inventaire += 1
@@ -71,34 +72,9 @@ while continuer:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     labyrinth.displayMap()
     labyrinth.window.blit(hero, (x * labyrinth.spriteSize, y * labyrinth.spriteSize))
 
 
-
-
-
-
-
-
-    pygame.display.flip()
-
-
-
-
-
 #rafraichissement de l'affichage
+    pygame.display.flip()

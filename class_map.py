@@ -19,7 +19,7 @@ class Map():
         self.needle = pygame.image.load("images/aiguille.png").convert()
         self.tube = pygame.image.load("images/tube.png").convert()
         self.villain = pygame.image.load("images/Gardien.png").convert()
-        # fonction who creating the map
+    # fonction who creating the map
     def mapCreation(self):
         with open("structure_labyrinthe", "r") as structure:
             column = []
@@ -60,29 +60,6 @@ class Map():
 
 
 
-    def mapCreationPixel(self):
-        structurePixel = []
-        y = 0
-        for ligne in self.matrix:
-            linePixel = []
-            x = 0
-            for item in ligne:
-                for spriteP in item:
-                    spritePixel = []
-                    spritePixel.append((x * self.spriteSize))
-                    spritePixel.append((y * self.spriteSize))
-                    spritePixel.append(spriteP)
-                linePixel.append(spritePixel)
-                x += 1
-            y += 1
-
-
-            structurePixel.append(linePixel)
-        self.matrixPixel = structurePixel
-
-
-
-
 
 
         #fonction who display the map
@@ -90,9 +67,7 @@ class Map():
         #displaying objects in the mapCreation
         self.window.blit(self.background, (0,0))
         self.window.blit(self.villain,(180, 420))
-        #self.window.blit(self.ether, ((self.object[0][0] * self.spriteSize) , (self.object[0][1] * self.spriteSize)))
-        #self.window.blit(self.needle, ((self.object[1][0] * self.spriteSize), (self.object[1][1] * self.spriteSize)))
-        #self.window.blit(self.tube, ((self.object[2][0] * self.spriteSize), (self.object[2][1] * self.spriteSize)))
+        
 
         y = 0
         for line in self.matrix:
