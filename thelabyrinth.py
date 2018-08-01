@@ -6,9 +6,14 @@ import pygame
 from pygame.locals import *
 
 from class_map import Map
+import class_engine
 from class_engine import *
+import sys
 
 
 if __name__ == "__main__":
 
+
+    #Hero = Engine()
+    #Hero.game()
     Engine.game(Engine)
