@@ -31,7 +31,7 @@ class Map:
         self.tube = pygame.image.load("images/tube.png").convert_alpha()
         self.villain = pygame.image.load("images/villain_ico.png").convert_alpha()
         self.home = pygame.image.load("images/home.jpg").convert_alpha()
-        self.menu = pygame.image.load("images/menu1.png").convert_alpha()
+        self.menu = pygame.image.load("images/menu.png").convert_alpha()
         self.after_game = pygame.image.load("images/after_game.png").convert_alpha()
         self.menu2 = pygame.image.load("images/menu2.png").convert_alpha()
 
@@ -113,20 +113,20 @@ class Map:
 
     def display_home(self):
         self.window.blit(self.home, (0, 0))
-        self.window.blit(self.menu, (142, 340))
+        self.window.blit(self.menu, (142, 420))
         pygame.display.flip()
         continuer = 1
         while continuer:
             for event in pygame.event.get():
                 if event.type == KEYDOWN:
-                    if event.key == K_RETURN:
+                    if event.key == K_SPACE:
                         continuer = 0
                     if event.key == K_ESCAPE:
                         sys.exit(0)
 
     def display_level(self):
         self.window.blit(self.home, (0, 0))
-        self.window.blit(self.menu2, (142, 340))
+        self.window.blit(self.menu2, (142, 370))
         pygame.display.flip()
         continu = 1
         while continu:
@@ -151,7 +151,7 @@ class Map:
         while loop:
             for event in pygame.event.get():
                 if event.type == KEYDOWN:
-                    if event.key == K_RETURN:
+                    if event.key == K_SPACE:
                         fonct.game()
                         loop = 0
                     if event.key == K_ESCAPE:

@@ -14,6 +14,6 @@ import sys
 if __name__ == "__main__":
 
 
-    #Hero = Engine()
-    #Hero.game()
-    Engine.game(Engine)
+    Hero = Engine()
+    Hero.game()
+    #Engine.game(Engine)
