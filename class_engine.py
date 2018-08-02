@@ -56,9 +56,6 @@ class Engine:
                                           (self.position_hero[0] * structure.sprite_size,
                                            self.position_hero[1] * structure.sprite_size))
 
-
-
-
     def end(self, structure, catalog, continuer):
         death = pygame.image.load("images/dead.png").convert_alpha()
         BRAVO = pygame.image.load("images/bravo.png").convert_alpha()

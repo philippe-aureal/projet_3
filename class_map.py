@@ -8,8 +8,6 @@ import pygame
 from pygame.locals import *
 import sys
 
-
-
 class Map:
 
     """class that creates the map from the structure_labyrinth
@@ -67,7 +65,6 @@ class Map:
         self.object = []
         while len(self.object) < 3:
             object_temp = [random.randint(0, 14), random.randint(0, 14)]
-
             if self.matrix[object_temp[1]][object_temp[0]][2] == "0":
                 self.object.append(object_temp)
                 if self.name_object == 0:
@@ -98,7 +95,6 @@ class Map:
 
         line_constant = 0
         self.window.blit(self.background, (0, 0))
-        #self.window.blit(self.villain, (180, 420))
         for line in self.matrix:
             case_constant = 0
             for case in line:
@@ -134,8 +130,6 @@ class Map:
                 if event.type == KEYDOWN and event.key == K_F1:
                     continu = 0
                     level = 1
-
-
                 if event.type == KEYDOWN and event.key == K_F2:
                     level = 2
                     continu = 0
@@ -155,12 +149,8 @@ class Map:
                         fonct.game()
                         loop = 0
                     if event.key == K_ESCAPE:
-                        # sys.exit(0)
                         loop = 0
             pygame.display.flip()
-
-
-
 
     def display_map(self):
         """show all elements of the table,
@@ -168,4 +158,3 @@ class Map:
 
         self.display_constant()
         self.display_object()
-        # displaying walls in the map
