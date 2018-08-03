@@ -94,53 +94,69 @@ class Engine:
         self.hero_right = pygame.image.load("images/personnage/right.png").convert_alpha()
         self.hero_left = pygame.image.load("images/personnage/left.png").convert_alpha()
         self.orientation = self.hero_down
+
+
+
+
+
+
+
         Laby.display_home()
-        level = Laby.display_level()
-        Laby.map_structure(level)
-        Laby.object_random()
-        Laby.display_map()
-        self.position_of_hero(Laby.matrix)
-        Laby.window.blit(self.orientation,
-                         (self.position_hero[0] * Laby.sprite_size,
-                          self.position_hero[1] * Laby.sprite_size))
-        pygame.display.flip()
-        inventory = 0
-        continuer = 1
-        while continuer:
+
+        loop2 = 1
+        while loop2:
+            Laby = Map()
+            level = Laby.display_level()
+            Laby.map_structure(level)
+            self.position_hero = []
+            self.position_of_hero(Laby.matrix)
+            Laby.object_random()
 
             Laby.display_map()
-            pygame.time.Clock().tick(30)
+            print(Laby.matrix)
+            print("stop")
             Laby.window.blit(self.orientation,
                              (self.position_hero[0] * Laby.sprite_size,
                               self.position_hero[1] * Laby.sprite_size))
-            for event in pygame.event.get():
-                if event.type == KEYDOWN:
-                    if event.key == K_ESCAPE:
-                        continuer = 0
-                    if event.key == K_DOWN:
-                        self.movement(Laby, 1)
-                    if event.key == K_UP:
-                        self.movement(Laby, 2)
-                        pygame.display.flip()
-                    if event.key == K_RIGHT:
-                        self.movement(Laby, 3)
-                    if event.key == K_LEFT:
-                        self.movement(Laby, 4)
-                    if Laby.matrix[self.position_hero[1]][self.position_hero[0]][2] == "ether":
-                        Laby.matrix[self.position_hero[1]][self.position_hero[0]][2] = "o"
-                        Laby.window.blit(Laby.ether, (0, 600))
-                        inventory += 1
-                    if Laby.matrix[self.position_hero[1]][self.position_hero[0]][2] == "needle":
-                        Laby.matrix[self.position_hero[1]][self.position_hero[0]][2] = "o"
-                        Laby.window.blit(Laby.needle, (50, 600))
-                        inventory += 1
-                    if Laby.matrix[self.position_hero[1]][self.position_hero[0]][2] == "tube":
-                        Laby.matrix[self.position_hero[1]][self.position_hero[0]][2] = "o"
-                        Laby.window.blit(Laby.tube, (100, 600))
-                        inventory += 1
-                    Laby.display_map()
-                    self.end(Laby, inventory, continuer)
-            continuer = self.end(Laby, inventory, continuer)
-            if continuer == 0:
-                Laby.display_quit(self)
             pygame.display.flip()
+            inventory = 0
+            continuer = 1
+            while continuer:
+
+                Laby.display_map()
+                pygame.time.Clock().tick(30)
+                Laby.window.blit(self.orientation,
+                                 (self.position_hero[0] * Laby.sprite_size,
+                                  self.position_hero[1] * Laby.sprite_size))
+                for event in pygame.event.get():
+                    if event.type == KEYDOWN:
+                        if event.key == K_ESCAPE:
+                            continuer = 0
+                        if event.key == K_DOWN:
+                            self.movement(Laby, 1)
+                        if event.key == K_UP:
+                            self.movement(Laby, 2)
+                            pygame.display.flip()
+                        if event.key == K_RIGHT:
+                            self.movement(Laby, 3)
+                        if event.key == K_LEFT:
+                            self.movement(Laby, 4)
+                        if Laby.matrix[self.position_hero[1]][self.position_hero[0]][2] == "ether":
+                            Laby.matrix[self.position_hero[1]][self.position_hero[0]][2] = "o"
+                            Laby.window.blit(Laby.ether, (0, 600))
+                            inventory += 1
+                        if Laby.matrix[self.position_hero[1]][self.position_hero[0]][2] == "needle":
+                            Laby.matrix[self.position_hero[1]][self.position_hero[0]][2] = "o"
+                            Laby.window.blit(Laby.needle, (50, 600))
+                            inventory += 1
+                        if Laby.matrix[self.position_hero[1]][self.position_hero[0]][2] == "tube":
+                            Laby.matrix[self.position_hero[1]][self.position_hero[0]][2] = "o"
+                            Laby.window.blit(Laby.tube, (100, 600))
+                            inventory += 1
+                        Laby.display_map()
+                        self.end(Laby, inventory, continuer)
+                continuer = self.end(Laby, inventory, continuer)
+                if continuer == 0:
+                    Laby.display_quit(self)
+                pygame.display.flip()
+        #self.position_of_hero(Laby.matrix)

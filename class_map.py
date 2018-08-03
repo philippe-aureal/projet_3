@@ -146,11 +146,12 @@ class Map:
             for event in pygame.event.get():
                 if event.type == KEYDOWN:
                     if event.key == K_SPACE:
-                        fonct.game()
+                        #fonct.game()
                         loop = 0
                     if event.key == K_ESCAPE:
-                        loop = 0
-            pygame.display.flip()
+
+                        sys.exit(0)
+        pygame.display.flip()
 
     def display_map(self):
         """show all elements of the table,
