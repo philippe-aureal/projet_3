@@ -36,9 +36,9 @@ class Map:
 
         """
         if level == 1:
-            level_structure = "structure_labyrhinte"
+            level_structure = "labyrinth_structure"
         else:
-            level_structure = "structure_labyrhinte2"
+            level_structure = "labyrinth_structure2"
         with open(level_structure, "r") as structure:
             column = []
             line_column = 0
@@ -132,7 +132,7 @@ class Map:
             line_constant += 1
 
     def display_home(self):
-        """display the home pagewith the firt menu
+        """display the home pagewith the first menu
 
         """
         self.menu = pygame.image.load("images/menu.png").convert_alpha()

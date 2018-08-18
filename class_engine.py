@@ -147,6 +147,7 @@ class Engine:
             self.position_hero = []
             self.position_of_hero(Laby.matrix)
             Laby.object_random()
+            print(Laby.matrix)
             Laby.display_map()
             Laby.window.blit(self.orientation,
                              (self.position_hero[0] * Laby.sprite_size,
