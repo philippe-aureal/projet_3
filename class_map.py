@@ -166,7 +166,7 @@ class Map:
                     continu = 0
         return level
 
-    def display_quit(self, fonct):
+    def display_quit(self):
         """display the restart or end menu
 
         """

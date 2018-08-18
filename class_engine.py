@@ -202,5 +202,5 @@ class Engine:
                         self.end(Laby, inventory, continuer)
                 continuer = self.end(Laby, inventory, continuer)
                 if continuer == 0:
-                    Laby.display_quit(self)
+                    Laby.display_quit()
                 pygame.display.flip()
