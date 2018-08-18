@@ -79,7 +79,7 @@ class Engine:
                                            self.position_hero[1] *
                                            structure.sprite_size))
 
-    def end(self, structure, catalog, continuer):
+    def end(self, structure, catalog, loop):
         """ method who display the differents final event of the game"""
 
         death = pygame.image.load("images/dead.png").convert_alpha()
@@ -101,7 +101,7 @@ class Engine:
             structure.window.blit(bravo, (position_bravo))
             pygame.display.flip()
             pygame.time.wait(1000)
-            continuer = 0
+            loop = 0
         # end and lost
         if structure.matrix[
                 self.position_hero[1]][self.position_hero[0]
@@ -118,8 +118,8 @@ class Engine:
             structure.window.blit(gameOver, (position_gameover))
             pygame.display.flip()
             pygame.time.wait(1000)
-            continuer = 0
-        return continuer
+            loop = 0
+        return loop
 
     def game(self):
         """method that manages the game engine by keyboard events"""
@@ -138,9 +138,9 @@ class Engine:
 
         Laby.display_home()
 
-        loop2 = 1
-        # loop that display all elements of the map
-        while loop2:
+        loop_menu = 1
+        # loop_menu that display all elements of the map
+        while loop_menu:
             Laby = Map()
             level = Laby.display_level()
             Laby.map_structure(level)
@@ -154,9 +154,9 @@ class Engine:
                               self.position_hero[1] * Laby.sprite_size))
             pygame.display.flip()
             inventory = 0
-            continuer = 1
+            loop_game = 1
             # Keyboard events loop for moving the hero
-            while continuer:
+            while loop_game:
 
                 Laby.display_map()
                 pygame.time.Clock().tick(30)
@@ -166,7 +166,7 @@ class Engine:
                 for event in pygame.event.get():
                     if event.type == KEYDOWN:
                         if event.key == K_ESCAPE:
-                            continuer = 0
+                            loop_game = 0
                         if event.key == K_DOWN:
                             self.movement(Laby, 1)
                         if event.key == K_UP:
@@ -199,8 +199,8 @@ class Engine:
                             Laby.window.blit(Laby.tube, (100, 600))
                             inventory += 1
                         Laby.display_map()
-                        self.end(Laby, inventory, continuer)
-                continuer = self.end(Laby, inventory, continuer)
-                if continuer == 0:
+                        self.end(Laby, inventory, loop_game)
+                loop_game = self.end(Laby, inventory, loop_game)
+                if loop_game == 0:
                     Laby.display_quit()
                 pygame.display.flip()
