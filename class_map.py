@@ -139,12 +139,12 @@ class Map:
         self.window.blit(self.home, (0, 0))
         self.window.blit(self.menu, (142, 420))
         pygame.display.flip()
-        continuer = 1
-        while continuer:
+        continu = 1
+        while continu:
             for event in pygame.event.get():
                 if event.type == KEYDOWN:
                     if event.key == K_SPACE:
-                        continuer = 0
+                        continu = 0
                     if event.key == K_ESCAPE:
                         sys.exit(0)
 

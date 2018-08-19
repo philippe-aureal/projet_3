@@ -141,13 +141,12 @@ class Engine:
         loop_menu = 1
         # loop_menu that display all elements of the map
         while loop_menu:
-            Laby = Map()
+            #Laby = Map()
             level = Laby.display_level()
             Laby.map_structure(level)
             self.position_hero = []
             self.position_of_hero(Laby.matrix)
             Laby.object_random()
-            print(Laby.matrix)
             Laby.display_map()
             Laby.window.blit(self.orientation,
                              (self.position_hero[0] * Laby.sprite_size,
