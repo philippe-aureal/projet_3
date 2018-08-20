@@ -114,7 +114,7 @@ class Engine:
                                   (self.position_hero[0]*structure.sprite_size,
                                    self.position_hero[1] *
                                    structure.sprite_size))
-            pygame.time.wait(1000)
+            #pygame.time.wait(1000)
             structure.window.blit(gameOver, (position_gameover))
             pygame.display.flip()
             pygame.time.wait(1000)
@@ -141,7 +141,7 @@ class Engine:
         loop_menu = 1
         # loop_menu that display all elements of the map
         while loop_menu:
-            #Laby = Map()
+            Laby = Map()
             level = Laby.display_level()
             Laby.map_structure(level)
             self.position_hero = []
@@ -157,11 +157,11 @@ class Engine:
             # Keyboard events loop for moving the hero
             while loop_game:
 
-                Laby.display_map()
                 pygame.time.Clock().tick(30)
                 Laby.window.blit(self.orientation,
                                  (self.position_hero[0] * Laby.sprite_size,
                                   self.position_hero[1] * Laby.sprite_size))
+                pygame.display.flip()
                 for event in pygame.event.get():
                     if event.type == KEYDOWN:
                         if event.key == K_ESCAPE:
