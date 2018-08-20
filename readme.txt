@@ -1,7 +1,7 @@
 ﻿About projet_₃
 
 
-projet_3 is a labyrinth game developed in python
+projet_3 is a labyrinth game developed in python 3.6
 
 
 Installation
