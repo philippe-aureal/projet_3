@@ -7,7 +7,7 @@ projet_3 is a labyrinth game developed in python 3.6
 
 # Installation
 
-pip requirement.txt
+pip install -r requirement.txt
 
 install the modules as shown above and in the terminal go to the directory level and run the file "thelabyrinth.py".
 
